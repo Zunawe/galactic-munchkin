@@ -6,6 +6,7 @@ function Player(fields)
 	_this.turnorder = fields.turnorder
 	_this.power = fields.power;
 	_this.level = fields.level;
+	_this.totalcard = fields.totalcard;
 	_this.currenthant = fields.currenthand;
 	_this.playedcards = fields.playedcards;
 	_this.levelmin = fields.levelmin;

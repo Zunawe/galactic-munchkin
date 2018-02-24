@@ -5,11 +5,10 @@ TODO:
 - Player objects to keep track of level and power
 - A way to trigger card effects when drawn/played for those that require it (remove the dependecy on an honor system to carry out effects)
 - A way for players to help each other out in battle (be able to select the helper or offer help for predetermined reward options).
-
-
-
+- 
 
 --------- If time allows ---------
 - Server connectivity with AWS for online play
+	- Maybe a system where one player creates an instance of the game and can provide friends with a game code so they can connect to specific game instance (no matchmaking, too hard)
 - Art for cards
 - Clever descriptions for the lulz

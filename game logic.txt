@@ -1,0 +1,105 @@
+logic:
+
+1. RNG turn order of players (Based off of # of players)
+	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+	//create turn order # array(from 1 to number of players)
+	//shuffle that array and put values into a stack
+	//give value to player 1-N
+		//just pop the next value from the stack
+
+2. Shuffle cards
+	A] "shuffle" the door cards and put them in the door stack
+   	B] "shuffle" the treasure cards and put them in the treasure stack
+
+3. Deal cards to each player
+	--dealing cards based on turn order
+		--need # of player/turn order max variable here
+	--deal 4 door cards to each player
+	--deal 4 treasure cards to each player
+
+	door card #1:
+		p1 gets 1 door card --> p2 gets 1 door card --> p3 gets 1 door card..etc
+	door card #2:
+		p1 gets 1 door card --> p2 gets 1 door card.....	
+	door card #3:
+		...
+	door card #4:
+		...
+	treasure card #1:
+		p1 gets 1 treasure card --> p2 gets 1 treasure card ...
+	treasure card #2:
+		...		
+	treasure card #3:
+		...
+	treasure card #4:
+		...
+
+	check that each player has 8 total cards
+		if total cards = 8
+			continue;
+		else
+			if door cards != 4
+				give door card
+			if treasure cards = 4;
+				give treasure card
+
+4. Give control to player who goes first
+	
+5. PLAYER TURN
+	A} Play/Equip cards [from hand]
+	B} Recalculate player attributes
+		1. Recalculate power
+		2. recalculate totat power = power + level
+
+	C} Draw door card
+		IF FIGHT [MONSTER CARD]:
+			--resolve fight
+			if win:
+				--level up player
+				--check player level against 10
+					if player level = 10
+						WIN/GAME OVER
+					else
+						continue;
+				--player receives treasure cards
+				--option to equip/use new items
+				--...go to card check... --> PART E
+			if loss:
+				--resolve escape (die roll)
+					if 1-4
+						bad stuff
+					if 5-6
+						escape (no bad stuff)
+						adjust character attributes
+				--option to equip/use new items
+		IF NOT FIGHT:
+			--resolve current card
+				--any character impacts?
+			--2nd turn ---> PART D
+	D} IF 2ND TURN
+		1. option to fight monster from hand (if player has any monsters)
+			FIGHT -- see fight logic from C
+		2. draw another door cards
+			if FIGHT
+				--see fight logic from C
+			if NOT FIGHT
+				--resolve card
+					--any player impact?
+				--option to equip/use new items
+				--card check --> PART E
+	E} CARD CHECK
+		--check if the player has 5 or less cards
+		IF card total >= 5:
+			--pick cards to remove ... down to 5
+		IF card total <= 5:
+			--end turn
+
+
+6. Change turn to next player
+
+
+	
+
+
+

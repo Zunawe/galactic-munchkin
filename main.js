@@ -6,7 +6,8 @@ const Container = PIXI.Container;
 var app = new PIXI.Application({
 	width: document.documentElement.clientWidth,
 	height: document.documentElement.clientHeight,
-	antialias: true
+	antialias: true,
+	backgroundColor: 0xFFC380
 });
 document.body.appendChild(app.view);
 
@@ -64,6 +65,7 @@ for(let i = 0; i < 3; ++i){
 	hand.addCard(new Card({title: i + ''}));
 }
 hand.addTo(app.stage);
+var testCard = new Card({title: 'asdf'});
 
 function play(dt){
 	// Empty
@@ -74,3 +76,30 @@ function gameLoop(dt){
 	state(dt);
 }
 app.ticker.add(gameLoop);
+
+//-------------Die Roll---------------
+var dice = {
+  sides: 6,
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+}
+
+var button = document.getElementById('button');
+
+button.onclick = function() {
+  var result = dice.roll();
+  app.stage.addChild(new PIXI.Sprite.fromImage("images/die-" + result + ".png"));
+};
+//------------------------------------
+
+
+
+
+
+
+
+
+
+

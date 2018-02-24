@@ -1,0 +1,15 @@
+TODO:
+
+--------- Basic Functionality ---------
+- Create card object with all necessary attributes
+- Player objects to keep track of level and power
+- A way to trigger card effects when drawn/played for those that require it (remove the dependecy on an honor system to carry out effects)
+- A way for players to help each other out in battle (be able to select the helper or offer help for predetermined reward options).
+
+
+
+
+--------- If time allows ---------
+- Server connectivity with AWS for online play
+- Art for cards
+- Clever descriptions for the lulz

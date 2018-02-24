@@ -120,28 +120,28 @@ Mind wipe	help	Discard all monsters in combat. No treasure is gained but the pla
 Actual God	help	you may encounter an actual god only on your turn. The god steps in and renders the battle finished as the monster is now a puff of smoke. Even if you had failed a run away , you may now take the monsters treasure but no level is gained. Usable only once.	combat: _end_, 	0	none
 Trans-Modifier	monster alteration	Use during any combat. Turns any one monster into anv Tauntaun, which runs away, leaving its treasure behind. Usable only once.  	combat: _draw treasures_ 	0	none
 Mind Trick	help	Allows you to change the victim of a curse you receive. Usable only once	player affected: _player_	0	none
-item for left hand	Equipable	power increase through item	lhand +1	0	
-item for right hand	Equipable	power increase through item	rhand +1	0	
-item for left hand	Equipable	power increase through item	lhand +2	0	
-item for right hand	Equipable	power increase through item	rhand +2	0	
-item for left hand	Equipable	power increase through item	lhand +3	0	
-item for right hand	Equipable	power increase through item	rhand +3	0	
-item for left hand	Equipable	power increase through item	lhand +4	0	
-item for right hand	Equipable	power increase through item	rhand +4	0	
-item for left hand	Equipable	power increase through item	lhand +5	0	
-item for right hand	Equipable	power increase through item	rhand +5	0	
-item for head	Equipable	power increase through item	head +1	0	
-item for head	Equipable	power increase through item	head +2	0	
-item for head	Equipable	power increase through item	head +3	0	
-item for head	Equipable	power increase through item	head +4	0	
-item for head	Equipable	power increase through item	head +5	0	
-item for foot	Equipable	power increase through item	foot +1	0	
-item for foot	Equipable	power increase through item	foot +2	0	
-item for foot	Equipable	power increase through item	foot +3	0	
-item for foot	Equipable	power increase through item	foot +4	0	
-item for foot	Equipable	power increase through item	foot +5	0	
-armor	Equipable	power increase through item	armor +1 	0	
-armor	Equipable	power increase through item	armor +2 	0	
-armor	Equipable	power increase through item	armor +3	0	
-armor	Equipable	power increase through item	armor +4	0	
-armor	Equipable	power increase through item	armor +5	0	
+item for left hand	Equipable	power increase through item	lhand +1	0	none
+item for right hand	Equipable	power increase through item	rhand +1	0	none
+item for left hand	Equipable	power increase through item	lhand +2	0	none
+item for right hand	Equipable	power increase through item	rhand +2	0	none
+item for left hand	Equipable	power increase through item	lhand +3	0	none
+item for right hand	Equipable	power increase through item	rhand +3	0	none
+item for left hand	Equipable	power increase through item	lhand +4	0	none
+item for right hand	Equipable	power increase through item	rhand +4	0	none
+item for left hand	Equipable	power increase through item	lhand +5	0	none
+item for right hand	Equipable	power increase through item	rhand +5	0	none
+item for head	Equipable	power increase through item	head +1	0	none
+item for head	Equipable	power increase through item	head +2	0	none
+item for head	Equipable	power increase through item	head +3	0	none
+item for head	Equipable	power increase through item	head +4	0	none
+item for head	Equipable	power increase through item	head +5	0	none
+item for foot	Equipable	power increase through item	foot +1	0	none
+item for foot	Equipable	power increase through item	foot +2	0	none
+item for foot	Equipable	power increase through item	foot +3	0	none
+item for foot	Equipable	power increase through item	foot +4	0	none
+item for foot	Equipable	power increase through item	foot +5	0	none
+armor	Equipable	power increase through item	armor +1 	0	none
+armor	Equipable	power increase through item	armor +2 	0	none
+armor	Equipable	power increase through item	armor +3	0	none
+armor	Equipable	power increase through item	armor +4	0	none
+armor	Equipable	power increase through item	armor +5	0	none

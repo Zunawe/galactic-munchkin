@@ -1,50 +1,35 @@
 var app = new PIXI.Application({
 	width: document.documentElement.clientWidth,
 	height: document.documentElement.clientHeight,
-	antialias: true,
+	antialias: true
 });
 document.body.appendChild(app.view);
 
-var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
-var hand = new PIXI.Container();
-
-PIXI.loader.add('images/monster_card.png').load(function (){
-	var sprite;
-	var title;
-
-	sprite = new PIXI.Sprite(PIXI.loader.resources['images/monster_card.png'].texture);
-	sprite.position.set(0, 0);
-	sprite.interactive = true;
-	sprite.on('click', function (){
-		console.log('clicked');
+var Card = (function (){
+	var cardPath = 'images/regular_card.png';
+	var cardTextStyle = new PIXI.TextStyle({
+		fontSize: 22,
+		fill: 'white'
 	});
 
-	sprite.on('mouseover', function (){
-		hand.y -= 100;
-	});
+	return function Constructor(fields){
+		var _this = this;
+		_this.title = fields.title;
 
-	sprite.on('mouseout', function (){
-		hand.y += 100;
-	});
-	hand.addChild(sprite);
+		_this.pixiObject = new PIXI.Container();
+		_this.pixiObject.addChild(new PIXI.Sprite.fromImage(cardPath));
+	};
+})();
 
-	title = new PIXI.Text('Text Title', cardTextStyle);
-	title.position.set(11, 7);
-	hand.addChild(title);
-});
+var testCard = new Card({title: 'asdf'});
+app.stage.addChild(testCard.pixiObject);
 
-app.ticker.add(gameLoop);
+function play(dt){
+	// Empty
+}
 
 var state = play;
-hand.y = renderer.height - 100;
-hand.x = renderer.width / 2;
-
-app.stage.addChild(hand);
-
 function gameLoop(dt){
 	state(dt);
 }
-
-function play(dt){
-	// hand ? hand.x += dt : undefined;
-}
+app.ticker.add(gameLoop);

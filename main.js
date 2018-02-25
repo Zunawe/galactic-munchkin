@@ -77,7 +77,7 @@ function gameLoop(dt){
 }
 app.ticker.add(gameLoop);
 
-//-------------Die Roll---------------
+//-------------Die Stuff-------------
 var dice = {
   sides: 6,
   roll: function () {
@@ -86,12 +86,27 @@ var dice = {
   }
 }
 
-var button = document.getElementById('button');
+var button = new Sprite.fromImage("images/die-5.png");
+button.anchor.x = 1;
+button.anchor.y = 1;
+button.x = app.screen.width-10;
+button.y = app.screen.height-10;
+button.buttonMode = true;
+button.interactive = true;
+app.stage.addChild(button);
 
-button.onclick = function() {
+button.on('click',function() {
   var result = dice.roll();
-  app.stage.addChild(new PIXI.Sprite.fromImage("images/die-" + result + ".png"));
-};
+  var die = new Sprite.fromImage("images/die-" + result + ".png");
+  die.anchor.x = 0.5;
+  die.anchor.y = 0.5;
+  die.x = app.screen.width/2;
+  die.y = app.screen.height/2;
+  die.scale.x = 3;
+  die.scale.y = 3;
+  app.stage.addChild(die);
+  setTimeout(function() {app.stage.removeChild(die)}, 2000);
+});
 //------------------------------------
 
 

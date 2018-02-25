@@ -3,6 +3,15 @@ const Sprite = PIXI.Sprite;
 const Text = PIXI.Text;
 const Container = PIXI.Container;
 
+function shuffle(array){
+    for (let i = array.length - 1; i > 0; --i) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 var app = new PIXI.Application({
 	width: window.innerWidth,
 	height: window.innerHeight,
@@ -101,7 +110,7 @@ function Hand(){
 }
 
 var treasureDeck = loadCards(treasureListTSV);
-// var doorDeck = loadCards(doorListTSV);
+var doorDeck = loadCards(doorListTSV);
 function loadCards(string){
 	var deck = [];
 	var lines = string.split('\n');
@@ -281,3 +290,10 @@ cardPlace2.addChild(cardPlace2Title);
 //-------------Played Cards Placement-------------
 
 hand.addTo(app.stage);
+
+function init(){
+	shuffle(doorDeck);
+	shuffle(treasureDeck);
+	// Shuffle Players
+	// Deal Cards
+}

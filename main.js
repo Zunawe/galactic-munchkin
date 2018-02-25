@@ -263,6 +263,7 @@ function boardSetup() {
 	app.stage.addChild(endTurn);
 }
 
+// This function sets up the initial environment
 function init(){
 	shuffle(doorDeck);
 	shuffle(treasureDeck);
@@ -281,6 +282,7 @@ function init(){
 
 init();
 
+// This function resets the environment every time a new turn is started
 function startNewTurn(){
 	//app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
 	app.stage = new Container();

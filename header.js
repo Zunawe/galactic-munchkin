@@ -12,6 +12,7 @@ var players = [];
 var discardsDoor = [];
 var discardsTreas = [];
 
+// This function shuffles the decks
 function shuffle(array){
     for (let i = array.length - 1; i > 0; --i) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -21,10 +22,17 @@ function shuffle(array){
     }
 }
 
+// This function discards a card to the discard file
 function discard(card) {
 	setTimeout(function() {cardPlace3.addChild(card)}, 3000);
 }
 
+/* Card is a constructor for the card objects
+ * The outer scope only runs in the initial setup as
+ * to prevent from being overwritten while the remainder
+ * has the necessary attributes to determine the 
+ * effect a card has on the gameplay. 
+*/
 var Card = (function (){
 	var cardPath = 'images/regular_card.png';
 	var nameTextStyle = new PIXI.TextStyle({
@@ -98,6 +106,7 @@ var Card = (function (){
 	};
 })();
 
+// This object adds/removes/manages cards that get added to the player's hand
 function Hand(){
 	var _this = this;
 
@@ -130,6 +139,7 @@ function Hand(){
 	};
 }
 
+// This object has all the necessary attributes that a player needs to track throughout the game.
 function Player() {
 	var _this = this;
 
@@ -146,6 +156,7 @@ function Player() {
 	_this.armor = null;
 }
 
+// This section loads the cards from .tsv files into respective decks
 var treasureDeck = loadCards(treasureListTSV);
 var doorDeck = loadCards(doorListTSV);
 treasureDeck.forEach((card) => card.isDoor = false);
@@ -168,7 +179,7 @@ function loadCards(string){
 	return deck;
 }
 
-//-------------Die Stuff-------------
+// Generates a random number between 1 and 6
 var dice = {
   sides: 6,
   roll: function () {

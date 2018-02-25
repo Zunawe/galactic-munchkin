@@ -4,11 +4,12 @@ const Text = PIXI.Text;
 const Container = PIXI.Container;
 
 var app = new PIXI.Application({
-	width: document.documentElement.clientWidth,
-	height: document.documentElement.clientHeight,
+	width: window.innerWidth,
+	height: window.innerHeight,
 	antialias: true,
 	backgroundColor: 0xFFC380
 });
+var renderer = PIXI.autoDetectRenderer();
 document.body.appendChild(app.view);
 
 var Card = (function (){
@@ -27,17 +28,45 @@ var Card = (function (){
 		_this.power = fields.power;
 		_this.badstuff = fields.badstuff;
 
-		var bgSprite = new Sprite.fromImage(cardPath);
+		var dragging = false;
+
+		_this.pixiObject = new Sprite.fromImage(cardPath);
+		_this.pixiObject.interactive = true;
 		var pixiTitle = new Text(_this.title, titleTextStyle);
 		pixiTitle.position.set(11, 7);
-
-		_this.pixiObject = new Container();
-		_this.pixiObject.addChild(bgSprite);
 		_this.pixiObject.addChild(pixiTitle);
 
 		_this.addTo = function (parent){
 			parent.addChild(_this.pixiObject);
-		}
+		};
+
+		_this.pixiObject.on('mouseover', function (){
+			_this.pixiObject.position.y -= 100;
+		});
+
+		_this.pixiObject.on('mouseout', function (){
+			_this.pixiObject.position.y += 100;
+		});
+
+		_this.pixiObject.on('mousedown', function (){
+			dragging = true;
+		});
+
+		_this.pixiObject.on('mouseup', function (){
+			dragging = false;
+		});
+
+		var lastMousePos = {x: 0, y: 0};
+		_this.pixiObject.on('mousemove', function (e){
+			if(dragging){
+				var mousePos = e.data.global;
+				_this.pixiObject.position.x += (mousePos.x - lastMousePos.x);
+				_this.pixiObject.position.y += (mousePos.y - lastMousePos.y);
+				console.log(mousePos.x - lastMousePos.x);
+			}
+			lastMousePos.x = e.data.global.x;
+			lastMousePos.y = e.data.global.y;
+		});
 	};
 })();
 
@@ -45,10 +74,12 @@ function Hand(){
 	var _this = this;
 
 	_this.pixiObject = new Container();
+	var pixiObject = _this.pixiObject;
 	_this.cards = [];
+	var cards = _this.cards;
 
 	_this.addCard = function (card){
-		card.addTo(_this.pixiObject);
+		card.addTo(pixiObject);
 		card.pixiObject.position.set(200 * _this.cards.length, 0);
 		_this.cards.push(card);
 	}
@@ -59,13 +90,12 @@ function Hand(){
 }
 
 var hand = new Hand();
-hand.pixiObject.position.set(32, 32);
+hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
 
-for(let i = 0; i < 3; ++i){
+for(let i = 0; i < 6; ++i){
 	hand.addCard(new Card({title: i + ''}));
 }
 hand.addTo(app.stage);
-var testCard = new Card({title: 'asdf'});
 
 function play(dt){
 	// Empty
@@ -108,13 +138,15 @@ button.on('click',function() {
   setTimeout(function() {app.stage.removeChild(die)}, 2000);
 });
 //------------------------------------
+function drawCrossAt(x, y){
+	var vert = new PIXI.Graphics();
+	var horiz = new PIXI.Graphics();
 
+	vert.beginFill(0x0);
+	vert.drawRect(x, 0, 1, 100000);
+	horiz.beginFill(0x0);
+	horiz.drawRect(0, y, 100000, 1);
 
-
-
-
-
-
-
-
-
+	app.stage.addChild(vert);
+	app.stage.addChild(horiz);
+}

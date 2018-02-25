@@ -217,11 +217,31 @@ writePlayerInfo(player2,120);
 writePlayerInfo(player3,210);
 writePlayerInfo(player4,300);
 
-
-
-
 app.stage.addChild(PlayerInfoCard);
 PlayerInfoCard.addChild(PlayerInfoCardTitle);
+
+//-------------Played Cards Placement-------------
+var cardPlace1 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
+var cardPlace1Title = new Text("Player Card", {fontSize: 24, color: 'black'});
+cardPlace1Title.anchor.x = 0.5;
+cardPlace1Title.anchor.y = 0.5;
+cardPlace1.x = app.screen.width/2 + 100;
+cardPlace1.y = app.screen.height/2-150;
+cardPlace1Title.position.set(100,150);
+
+var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
+var cardPlace2Title = new Text("Door Card", {fontSize: 24, color: 'black'});
+cardPlace2Title.anchor.x = 0.5;
+cardPlace2Title.anchor.y = 0.5;
+cardPlace2.x = app.screen.width/2 - 300;
+cardPlace2.y = app.screen.height/2 - 150;
+cardPlace2Title.position.set(100,150);
+
+app.stage.addChild(cardPlace1);
+cardPlace1.addChild(cardPlace1Title);
+app.stage.addChild(cardPlace2);
+cardPlace2.addChild(cardPlace2Title);
+
 
 
 

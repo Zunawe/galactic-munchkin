@@ -18,6 +18,12 @@ var Card = (function (){
 		fontSize: 22,
 		fill: 'white'
 	});
+	var descTextStyle = new PIXI.TextStyle({
+		fontSize: 14,
+		fill: 'white',
+		wordWrap: true,
+		wordWrapWidth: 180
+	});
 
 	return function Constructor(fields){
 		var _this = this;
@@ -33,20 +39,25 @@ var Card = (function (){
 
 		_this.pixiObject = new Sprite.fromImage(cardPath);
 		_this.pixiObject.interactive = true;
+		
 		var pixiName = new Text(_this.name, nameTextStyle);
 		pixiName.position.set(11, 7);
 		_this.pixiObject.addChild(pixiName);
+
+		var pixiDescription = new Text(_this.description, descTextStyle);
+		pixiDescription.position.set(11, 190);
+		_this.pixiObject.addChild(pixiDescription);
 
 		_this.addTo = function (parent){
 			parent.addChild(_this.pixiObject);
 		};
 
 		_this.pixiObject.on('mouseover', function (){
-			_this.pixiObject.position.y -= 180;
+			_this.pixiObject.position.y -= 200;
 		});
 
 		_this.pixiObject.on('mouseout', function (){
-			_this.pixiObject.position.y += 180;
+			_this.pixiObject.position.y += 200;
 		});
 
 		_this.pixiObject.on('mousedown', function (){
@@ -89,28 +100,32 @@ function Hand(){
 	}
 }
 
-var cards = [];
-(function loadCards(string){
+var treasureDeck = loadCards(treasureListTSV);
+// var doorDeck = loadCards(doorListTSV);
+function loadCards(string){
+	var deck = [];
 	var lines = string.split('\n');
 	var columnNames = lines[0].split('\t').map((s) => s.toLowerCase().replace(/ /g,''));
-	console.log(columnNames);
 	for(let i = 1; i < lines.length; ++i){
+		if(lines[i].length === 0){
+			continue;
+		}
 		let tokens = lines[i].split('\t');
 		let newFields = {};
 		for(let j = 0; j < columnNames.length; ++j){
 			newFields[columnNames[j]] = tokens[j];
 		}
-		cards.push(new Card(newFields));
+		deck.push(new Card(newFields));
 	}
-})(cardListTSV);
+	return deck;
+}
 
 var hand = new Hand();
 hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
 
 for(let i = 0; i < 6; ++i){
-	hand.addCard(cards[i * 3]);
+	hand.addCard(treasureDeck[i * 3]);
 }
-hand.addTo(app.stage);
 
 function play(dt){
 	// Empty
@@ -246,6 +261,11 @@ cardPlace1.x = app.screen.width/2 + 100;
 cardPlace1.y = app.screen.height/2-300;
 cardPlace1Title.position.set(100,150);
 
+cardPlace1.interactive = true;
+cardPlace1.on('mouseup', function (){
+	console.log('here');
+});
+
 var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
 var cardPlace2Title = new Text("Door Card", {fontSize: 24, color: 'black'});
 cardPlace2Title.anchor.x = 0.5;
@@ -260,25 +280,4 @@ app.stage.addChild(cardPlace2);
 cardPlace2.addChild(cardPlace2Title);
 //-------------Played Cards Placement-------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+hand.addTo(app.stage);

@@ -1,4 +1,5 @@
-Name	Type 	Desciption	Effect	Power	Bad Stuff	Temp Column
+var treasureListTSV =
+`Name	Type 	Description	Effect	Power	Bad Stuff	Temp Column
 Flamethrower	Battle Bonus	bonus to either side: +5	power: +5	0	none	Temp
 Freeze Ray	Battle Bonus	bonus to either side: +3	power: +3	0	none	Temp
 Lower Gravity	Battle Bonus	bonus to either side: +2	power: +2	0	none	Temp
@@ -60,3 +61,4 @@ armor	Equipable	power increase through item	armor: +2 	0	none	none
 armor	Equipable	power increase through item	armor: +3	0	none	none
 armor	Equipable	power increase through item	armor: +4	0	none	none
 armor	Equipable	power increase through item	armor: +5	0	none	none
+`;

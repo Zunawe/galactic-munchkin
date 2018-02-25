@@ -109,6 +109,16 @@ function Hand(){
 	}
 }
 
+function Player() {
+	var _this = this;
+
+	_this.hand = new Hand();
+	_this.level = 1;
+	_this.power = 1;
+	_this.race = undefined;
+	_this.class = undefined;
+}
+
 var treasureDeck = loadCards(treasureListTSV);
 var doorDeck = loadCards(doorListTSV);
 function loadCards(string){
@@ -145,6 +155,7 @@ function gameLoop(dt){
 	state(dt);
 }
 app.ticker.add(gameLoop);
+
 
 //-------------Die Stuff-------------
 var dice = {
@@ -291,9 +302,16 @@ cardPlace2.addChild(cardPlace2Title);
 
 hand.addTo(app.stage);
 
+var players = [];
+
 function init(){
 	shuffle(doorDeck);
 	shuffle(treasureDeck);
-	// Shuffle Players
+	for (let i = 0; i < 4; ++i) {
+		players.push(new Player()); 
+	}
+	shuffle(players);
 	// Deal Cards
 }
+
+init();

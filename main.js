@@ -92,15 +92,15 @@ function boardSetup() {
 		this.clas = clas;
 	}
 
-	var player1 = new playerInfo('Chewie',3,8,'Wookie','Jedi');
-	var player2 = new playerInfo('Clara',5,6,'Human','Companion');
-	var player3 = new playerInfo('Scottie',6,6,'Human','Red Shirt');
-	var player4 = new playerInfo('The Doctor',4,11,'Timelord','No Class');
+	var player1 = new playerInfo('Chewie',1,1,'Wookie','Jedi');
+	var player2 = new playerInfo('Clara',1,1,'Human','Companion');
+	var player3 = new playerInfo('Scottie',1,1,'Human','Red Shirt');
+	var player4 = new playerInfo('The Doctor',1,1,'Timelord','No Class');
 
 	function writePlayerInfo(player, y) {
 		var playerName = new Text(player.name, {fontSize: 24 , color: 'black'});
-		var playerLevel = new Text('Level: '+player.level, {fontSize: 14 , color: 'black'});
-		var playerPower = new Text('Power: '+player.power, {fontSize: 14 , color: 'black'});
+		var playerLevel = new Text('Level: '+players[currentPlayerIndex].level, {fontSize: 14 , color: 'black'});
+		var playerPower = new Text('Power: '+players[currentPlayerIndex].power, {fontSize: 14 , color: 'black'});
 		var playerRace = new Text(players[currentPlayerIndex].race ? ('Race: '+players[currentPlayerIndex].race.title) : "Race: Human", {fontSize: 14 , color: 'black'});
 		var playerClass = new Text(players[currentPlayerIndex].class ? ('Class: '+players[currentPlayerIndex].class.title) : "Class: No Class", {fontSize: 14 , color: 'black'});
 

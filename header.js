@@ -9,6 +9,8 @@ var currentMonster = null;
 var currentPlayerIndex = -1;
 var battlePhase = false;
 var players = [];
+var discardsDoor = [];
+var discardsTreas = [];
 
 function shuffle(array){
     for (let i = array.length - 1; i > 0; --i) {

@@ -101,8 +101,8 @@ function boardSetup() {
 		var playerName = new Text(player.name, {fontSize: 24 , color: 'black'});
 		var playerLevel = new Text('Level: '+player.level, {fontSize: 14 , color: 'black'});
 		var playerPower = new Text('Power: '+player.power, {fontSize: 14 , color: 'black'});
-		var playerRace = new Text('Race: '+player.race, {fontSize: 14 , color: 'black'});
-		var playerClass = new Text('Class: '+player.clas, {fontSize: 14 , color: 'black'});
+		var playerRace = new Text(players[currentPlayerIndex].race ? ('Race: '+players[currentPlayerIndex].race.title) : "Race: Human", {fontSize: 14 , color: 'black'});
+		var playerClass = new Text(players[currentPlayerIndex].class ? ('Class: '+players[currentPlayerIndex].class.title) : "Class: No Class", {fontSize: 14 , color: 'black'});
 
 		playerName.position.set(10, y);
 		playerLevel.position.set(10, y+30);
@@ -135,7 +135,18 @@ function boardSetup() {
 	cardPlace1Title.position.set(100,150);
 
 	cardPlace1.interactive = true;
-	cardPlace1.on('mouseup', function (){
+	cardPlace1.on('click', function (){
+		switch (selectedCard.type) {
+			case 'Class': 
+				players[currentPlayerIndex].class = selectedCard;
+				break;
+			case 'Race':
+				players[currentPlayerIndex].race = selectedCard;
+				break;
+			case 'level modifier':
+				players[currentPlayerIndex].level += 1;
+				break;
+		}
 		selectedCard.addTo(cardPlace1);
 		selectedCard.pixiObject.position.set(0, 0);
 		players[currentPlayerIndex].hand.removeCard(selectedCard);
@@ -143,7 +154,7 @@ function boardSetup() {
 	});
 
 	var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
-	var cardPlace2Title = new Text("Door Card", {fontSize: 24, color: 'black'});
+	var cardPlace2Title = new Text("Drawn Card", {fontSize: 24, color: 'black'});
 	cardPlace2Title.anchor.x = 0.5;
 	cardPlace2Title.anchor.y = 0.5;
 	cardPlace2.x = app.screen.width/2 - 300;

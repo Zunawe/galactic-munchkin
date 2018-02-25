@@ -150,7 +150,7 @@ function boardSetup() {
 		selectedCard.addTo(cardPlace1);
 		selectedCard.pixiObject.position.set(0, 0);
 		players[currentPlayerIndex].hand.removeCard(selectedCard);
-		selectedCard.isHeld = false;
+		selectedCard = null;
 	});
 
 	var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);

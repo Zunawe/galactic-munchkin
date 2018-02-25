@@ -76,7 +76,9 @@ var Card = (function (){
 		});
 
 		_this.pixiObject.on('click', function (){
-			selectedCard = _this;
+			if(_this.isHeld){
+				selectedCard = _this;
+			}
 		});
 
 		var lastMousePos = {x: 0, y: 0};

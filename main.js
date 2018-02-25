@@ -154,27 +154,37 @@ function boardSetup() {
 	cardPlace2.addChild(cardPlace2Title);
 
 //-------------Played Cards Placement-------------
-	var door_deck_button = new Sprite.fromImage("images/die-2.png");
-	door_deck_button.anchor.x = 0;
-	door_deck_button.anchor.y = 0;
+	var door_deck_button = new Sprite.fromImage("images/door.jpg");
 	door_deck_button.x = 10;
 	door_deck_button.y = 10;
 	door_deck_button.buttonMode = true;
 	door_deck_button.interactive = true;
 	app.stage.addChild(door_deck_button);
 
+	var treas_deck_button = new Sprite.fromImage("images/treasure.jpg");
+	treas_deck_button.x = 158;
+	treas_deck_button.y = 10;
+	treas_deck_button.scale.set(0.5,0.5);
+	treas_deck_button.buttonMode = true;
+	treas_deck_button.interactive = true;
+	app.stage.addChild(treas_deck_button);
+
 	door_deck_button.on('click',function() {
-	var drawnCardDoor = doorDeck.pop();
-	if (drawnCardDoor.type === 'MONSTER') {
-		battlePhase = !battlePhase;
-	}
-	if (battlePhase) {
-		drawnCardDoor.addTo(cardPlace2);
-	}
-	else {
-		players[currentPlayerIndex].hand.addCard(drawnCardDoor);
-	}
+		var drawnCardDoor = doorDeck.pop();
+		if (drawnCardDoor.type === 'MONSTER') {
+			battlePhase = !battlePhase;
+		}
+		if (battlePhase) {
+			drawnCardDoor.addTo(cardPlace2);
+		}
+		else {
+			players[currentPlayerIndex].hand.addCard(drawnCardDoor);
+		}
 	});
+	treas_deck_button.on('click',function() {
+		var drawCardTreas = treasureDeck.pop();
+		players[currentPlayerIndex].hand.addCard(drawCardTreas);
+	})
 }
 
 var players = [];

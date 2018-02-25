@@ -150,3 +150,97 @@ function drawCrossAt(x, y){
 	app.stage.addChild(vert);
 	app.stage.addChild(horiz);
 }
+
+//-------------Player Score-------------
+var currentPlayer = '????????';
+var PLevel = '??';
+var PPower = '??';
+var PlayerScoreText = new Text('Current Player: '+currentPlayer+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
+PlayerScoreText.anchor.x = 0.5;
+PlayerScoreText.x = app.screen.width/2;
+app.stage.addChild(PlayerScoreText);
+
+//-------------Player Info Cards-------------
+var rectWidth = 300;
+var rectHeight = 700;
+var PlayerInfoCard = new PIXI.Graphics().beginFill(0x646464).drawRoundedRect(0,0,rectWidth,rectHeight,20);
+var PlayerInfoCardTitle = new Text("Player Info", {fontSize: 30 , color: 'black'});
+PlayerInfoCardTitle.position.set(rectWidth/2, rectHeight-5);
+PlayerInfoCardTitle.anchor.x = 0.5;
+PlayerInfoCardTitle.anchor.y = 1;
+PlayerInfoCard.x = app.screen.width-(rectWidth-20);
+PlayerInfoCard.y = 50 - rectHeight;
+PlayerInfoCard.interactive = true;
+
+PlayerInfoCard.on('mouseover', function() {
+	PlayerInfoCard.y += (rectHeight-70);
+});
+PlayerInfoCard.on('mouseout', function() {
+	PlayerInfoCard.y -= (rectHeight-70);
+});
+
+function playerInfo(name,level,power,race,clas) {
+	this.name = name;
+	this.level = level;
+	this.power = power;
+	this.race = race;
+	this.clas = clas;
+}
+
+var player1 = new playerInfo('Chewie',3,8,'Wookie','Jedi');
+var player2 = new playerInfo('Clara',5,6,'Human','Companion');
+var player3 = new playerInfo('Scottie',6,6,'Human','Red Shirt');
+var player4 = new playerInfo('The Doctor',4,11,'Timelord','No Class');
+
+function writePlayerInfo(player, y) {
+	var playerName = new Text(player.name, {fontSize: 24 , color: 'black'});
+	var playerLevel = new Text('Level: '+player.level, {fontSize: 14 , color: 'black'});
+	var playerPower = new Text('Power: '+player.power, {fontSize: 14 , color: 'black'});
+	var playerRace = new Text('Race: '+player.race, {fontSize: 14 , color: 'black'});
+	var playerClass = new Text('Class: '+player.clas, {fontSize: 14 , color: 'black'});
+
+	playerName.position.set(10, y);
+	playerLevel.position.set(10, y+30);
+	playerPower.position.set(rectWidth/2, y+30);
+	playerRace.position.set(10, y+60);
+	playerClass.position.set(rectWidth/2, y+60);
+
+	PlayerInfoCard.addChild(playerName);
+	PlayerInfoCard.addChild(playerLevel);
+	PlayerInfoCard.addChild(playerPower);
+	PlayerInfoCard.addChild(playerRace);
+	PlayerInfoCard.addChild(playerClass);
+}
+
+writePlayerInfo(player1,30);
+writePlayerInfo(player2,120);
+writePlayerInfo(player3,210);
+writePlayerInfo(player4,300);
+
+
+
+
+app.stage.addChild(PlayerInfoCard);
+PlayerInfoCard.addChild(PlayerInfoCardTitle);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

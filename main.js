@@ -2,7 +2,7 @@ var app = new PIXI.Application({
 	width: window.innerWidth,
 	height: window.innerHeight,
 	antialias: true,
-	backgroundColor: 0xFFC380
+	backgroundColor: 0x262c3f
 });
 var renderer = PIXI.autoDetectRenderer();
 document.body.appendChild(app.view);
@@ -189,6 +189,7 @@ function boardSetup() {
 		}
 		if (battlePhase) {
 			drawnCardDoor.addTo(cardPlace2);
+			currentMonster = drawnCardDoor;
 		}
 		else {
 			players[currentPlayerIndex].hand.addCard(drawnCardDoor);
@@ -197,7 +198,28 @@ function boardSetup() {
 	treas_deck_button.on('click',function() {
 		var drawCardTreas = treasureDeck.pop();
 		players[currentPlayerIndex].hand.addCard(drawCardTreas);
-	})
+	});
+
+	var resolveCombatButton = new PIXI.Graphics().beginFill(0x646464).drawRoundedRect(0, 0, 120, 40, 5);
+	resolveCombatButton.x = 10;
+	resolveCombatButton.y = 158;
+	resolveCombatButton.buttonMode = true;
+	resolveCombatButton.interactive = true;
+	resolveCombatButton.on('click', function (){
+		if(currentMonster.power >= players[currentPlayerIndex].power){
+			--players[currentPlayerIndex].level;
+		}
+		else{
+			++players[currentPlayerIndex].level;
+		}
+		// discard(currentMonster);
+		currentMonster = null;
+	});
+	app.stage.addChild(resolveCombatButton);
+	var resolveCombatText = new Text('Resolve');
+	resolveCombatText.x = 20;
+	resolveCombatText.y = 164;
+	app.stage.addChild(resolveCombatText);
 }
 
 function init(){

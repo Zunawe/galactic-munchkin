@@ -40,8 +40,6 @@ Wandering Alien	Wandering Alien	__description__	none	0	none	none
 Wandering Alien	Wandering Alien	__description__	none	0	none	none
 Force Deception	Special Card 	Discard a monster and its modifiers and replace this monster with a monster from your hand	monster power: update	0	none	none
 Force Epiphany	Special Card 	This card must be played immediatly. All jedi gain a level (and can gain the winning level)	level: jedi: +1	0	none	none
-						
-						
 Stormtrooper	MONSTER	_description_	none	1	none	none
 Wamp Rat	MONSTER	_description_	none	1	none	none
 The oode	MONSTER	_description_	none	1	none	none

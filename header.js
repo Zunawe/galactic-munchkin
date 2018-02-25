@@ -5,6 +5,7 @@ const Container = PIXI.Container;
 
 // Global Variables
 var selectedCard = null;
+var currentMonster = null;
 var currentPlayerIndex = -1;
 var battlePhase = false;
 var players = [];

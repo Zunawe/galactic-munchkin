@@ -138,6 +138,12 @@ function Player() {
 	_this.power = 1;
 	_this.race = undefined;
 	_this.class = undefined;
+
+	_this.rhand = null;
+	_this.lhand = null;
+	_this.head = null;
+	_this.foot = null;
+	_this.armor = null;
 }
 
 var treasureDeck = loadCards(treasureListTSV);

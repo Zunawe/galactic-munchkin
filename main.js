@@ -135,6 +135,9 @@ function boardSetup() {
 			case 'level modifier':
 				players[currentPlayerIndex].level += 1;
 				break;
+			case 'Equipable':
+				players[currentPlayerIndex][selectedCard.effect.substr(0, selectedCard.effect.indexOf(':'))] = selectedCard;
+				break;
 		}
 		selectedCard.addTo(cardPlace1);
 		selectedCard.pixiObject.position.set(0, 0);
@@ -223,7 +226,13 @@ function boardSetup() {
 	resolveCombatButton.buttonMode = true;
 	resolveCombatButton.interactive = true;
 	resolveCombatButton.on('click', function (){
-		if(currentMonster.power >= players[currentPlayerIndex].power){
+		var power = players[currentPlayerIndex].level +
+		            (players[currentPlayerIndex].lhand ? Number(players[currentPlayerIndex].lhand.effect.substr(players[currentPlayerIndex].lhand.effect.indexOf(':') + 1)) : 0) +
+		            (players[currentPlayerIndex].rhand ? Number(players[currentPlayerIndex].rhand.effect.substr(players[currentPlayerIndex].rhand.effect.indexOf(':') + 1)) : 0) +
+		            (players[currentPlayerIndex].foot ? Number(players[currentPlayerIndex].foot.effect.substr(players[currentPlayerIndex].foot.effect.indexOf(':') + 1)) : 0) +
+		            (players[currentPlayerIndex].head ? Number(players[currentPlayerIndex].head.effect.substr(players[currentPlayerIndex].head.effect.indexOf(':') + 1)) : 0) +
+		            (players[currentPlayerIndex].armor ? Number(players[currentPlayerIndex].armor.effect.substr(players[currentPlayerIndex].armor.effect.indexOf(':') + 1)) : 0);
+		if(currentMonster.power >= power){
 			--players[currentPlayerIndex].level;
 		}
 		else{

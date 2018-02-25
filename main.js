@@ -54,10 +54,9 @@ function boardSetup() {
 	}
 
 	//-------------Player Score-------------
-	var currentPlayer = '????????';
 	var PLevel = '??';
 	var PPower = '??';
-	var PlayerScoreText = new Text('Current Player: '+currentPlayer+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
+	var PlayerScoreText = new Text('Current Player: '+players.indexOf(currentPlayer)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
 	PlayerScoreText.anchor.x = 0.5;
 	PlayerScoreText.x = app.screen.width/2;
 	app.stage.addChild(PlayerScoreText);
@@ -135,7 +134,10 @@ function boardSetup() {
 
 	cardPlace1.interactive = true;
 	cardPlace1.on('mouseup', function (){
-		console.log('here');
+		selectedCard.addTo(cardPlace1);
+		selectedCard.pixiObject.position.set(0, 0);
+		currentPlayer.hand.removeCard(selectedCard);
+		selectedCard.isHeld = false;
 	});
 
 	var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
@@ -160,9 +162,18 @@ function init(){
 	for (let i = 0; i < 4; ++i) {
 		players.push(new Player()); 
 	}
-	shuffle(players);
-	// Deal Cards
+
+	for(let i = 0; i < players.length; ++i){
+		for(let j = 0; j < 4; ++j){
+			players[i].hand.addCard(doorDeck.pop());
+			players[i].hand.addCard(treasureDeck.pop());
+		}
+	}
 }
 
 boardSetup();
 init();
+
+currentPlayer = players[0];
+currentPlayer.hand.addTo(app.stage);
+currentPlayer.hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);

@@ -3,6 +3,10 @@ const Sprite = PIXI.Sprite;
 const Text = PIXI.Text;
 const Container = PIXI.Container;
 
+// Global Variables
+var selectedCard = null;
+var currentPlayer = null;
+
 function shuffle(array){
     for (let i = array.length - 1; i > 0; --i) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -35,6 +39,8 @@ var Card = (function (){
 		_this.badstuff = fields.badstuff;
 		_this.temp = fields.tempcolumn === 'Temp';
 
+		_this.isHeld = false;
+
 		var dragging = false;
 
 		_this.pixiObject = new Sprite.fromImage(cardPath);
@@ -53,19 +59,19 @@ var Card = (function (){
 		};
 
 		_this.pixiObject.on('mouseover', function (){
-			_this.pixiObject.position.y -= 200;
+			if(_this.isHeld){
+				_this.pixiObject.position.y -= 200;
+			}
 		});
 
 		_this.pixiObject.on('mouseout', function (){
-			_this.pixiObject.position.y += 200;
+			if(_this.isHeld){
+				_this.pixiObject.position.y += 200;
+			}
 		});
 
-		_this.pixiObject.on('mousedown', function (){
-			dragging = true;
-		});
-
-		_this.pixiObject.on('mouseup', function (){
-			dragging = false;
+		_this.pixiObject.on('click', function (){
+			selectedCard = _this;
 		});
 
 		var lastMousePos = {x: 0, y: 0};
@@ -91,13 +97,26 @@ function Hand(){
 
 	_this.addCard = function (card){
 		card.addTo(pixiObject);
-		card.pixiObject.position.set(200 * _this.cards.length, 0);
+		card.isHeld = true;
 		_this.cards.push(card);
+		_this.recalculateCardPositions();
+	};
+
+	_this.removeCard = function (card){
+		_this.cards.splice(_this.cards.indexOf(card), 1);
+		card.isHeld = false;
+		_this.recalculateCardPositions();
 	}
 
 	_this.addTo = function (parent){
 		parent.addChild(_this.pixiObject);
-	}
+	};
+
+	_this.recalculateCardPositions = function (){
+		for(let i = 0; i < _this.cards.length; ++i){
+			cards[i].pixiObject.position.set(i * 200, 0);
+		}
+	};
 }
 
 function Player() {

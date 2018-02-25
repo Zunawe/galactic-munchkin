@@ -205,10 +205,13 @@ function init(){
 	currentPlayerIndex = players.length-1;
 }
 
-boardSetup();
 init();
 
-app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
-currentPlayerIndex = (currentPlayerIndex + 1)%players.length
-players[currentPlayerIndex].hand.addTo(app.stage);
-players[currentPlayerIndex].hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
+function startNewTurn(){
+	app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
+	currentPlayerIndex = (currentPlayerIndex + 1)%players.length
+	players[currentPlayerIndex].hand.addTo(app.stage);
+	players[currentPlayerIndex].hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
+	boardSetup();
+}
+startNewTurn();

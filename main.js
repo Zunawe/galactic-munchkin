@@ -27,6 +27,7 @@ function boardSetup() {
 	button.y = app.screen.height-10;
 	button.buttonMode = true;
 	button.interactive = true;
+
 	app.stage.addChild(button);
 
 	button.on('click',function() {
@@ -58,14 +59,14 @@ function boardSetup() {
 	//-------------Player Score-------------
 	var PLevel = players[currentPlayerIndex].level;
 	var PPower = players[currentPlayerIndex].power;
-	var PlayerScoreText = new Text('Current Player: '+(currentPlayerIndex+1)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
+	var PlayerScoreText = new Text('Current Player: '+(currentPlayerIndex+1)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'white', align: 'center'});
 	PlayerScoreText.anchor.x = 0.5;
 	PlayerScoreText.x = app.screen.width/2;
 	app.stage.addChild(PlayerScoreText);
 
 	//-------------Player Info Cards-------------
 	var rectWidth = 300;
-	var rectHeight = 700;
+	var rectHeight = 450;
 	var PlayerInfoCard = new PIXI.Graphics().beginFill(0x646464).drawRoundedRect(0,0,rectWidth,rectHeight,20);
 	var PlayerInfoCardTitle = new Text("Player Info", {fontSize: 30 , color: 'black'});
 	PlayerInfoCardTitle.position.set(rectWidth/2, rectHeight-5);
@@ -99,10 +100,10 @@ function boardSetup() {
 
 	function writePlayerInfo(player, y) {
 		var playerName = new Text(player.name, {fontSize: 24 , color: 'black'});
-		var playerLevel = new Text('Level: '+players[currentPlayerIndex].level, {fontSize: 14 , color: 'black'});
-		var playerPower = new Text('Power: '+players[currentPlayerIndex].power, {fontSize: 14 , color: 'black'});
-		var playerRace = new Text(players[currentPlayerIndex].race ? ('Race: '+players[currentPlayerIndex].race.title) : "Race: Human", {fontSize: 14 , color: 'black'});
-		var playerClass = new Text(players[currentPlayerIndex].class ? ('Class: '+players[currentPlayerIndex].class.title) : "Class: No Class", {fontSize: 14 , color: 'black'});
+		var playerLevel = new Text('Level: '+player.level, {fontSize: 14 , color: 'black'});
+		var playerPower = new Text('Power: '+player.power, {fontSize: 14 , color: 'black'});
+		var playerRace = new Text(player.race ? ('Race: '+player.race.title) : "Race: Human", {fontSize: 14 , color: 'black'});
+		var playerClass = new Text(player.class ? ('Class: '+player.class.title) : "Class: No Class", {fontSize: 14 , color: 'black'});
 
 		playerName.position.set(10, y);
 		playerLevel.position.set(10, y+30);
@@ -117,10 +118,11 @@ function boardSetup() {
 		PlayerInfoCard.addChild(playerClass);
 	}
 
-	writePlayerInfo(player1,30);
-	writePlayerInfo(player2,120);
-	writePlayerInfo(player3,210);
-	writePlayerInfo(player4,300);
+	writePlayerInfo(players[0],90*0+30);
+	writePlayerInfo(players[1],90*1+30);
+	writePlayerInfo(players[2],90*2+30);
+	writePlayerInfo(players[3],90*3+30);
+
 
 	app.stage.addChild(PlayerInfoCard);
 	PlayerInfoCard.addChild(PlayerInfoCardTitle);
@@ -161,12 +163,40 @@ function boardSetup() {
 	cardPlace2.y = app.screen.height/2 - 150;
 	cardPlace2Title.position.set(100,150);
 
+	var cardPlace3 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
+	var cardPlace3Title = new Text("Discard Pile", {fontSize: 24, color: 'black'});
+	cardPlace3Title.anchor.x = 0.5;
+	cardPlace3Title.anchor.y = 0.5;
+	cardPlace3.x = 10;
+	cardPlace3.y = app.screen.height/2 - 150;
+	cardPlace3Title.position.set(100,150);
+	cardPlace3.interactive = true;
+
+	cardPlace3.on('click', function (){
+		selectedCard.addTo(cardPlace3);
+		selectedCard.pixiObject.position.set(0, 0);
+		players[currentPlayerIndex].hand.removeCard(selectedCard);
+		selectedCard = null;
+	});
+
 	app.stage.addChild(cardPlace1);
 	cardPlace1.addChild(cardPlace1Title);
 	app.stage.addChild(cardPlace2);
 	cardPlace2.addChild(cardPlace2Title);
+	app.stage.addChild(cardPlace3);
+	cardPlace3.addChild(cardPlace3Title);
 
 //-------------Played Cards Placement-------------
+	discard = function(card) {
+		cardPlace3.addChild(card.pixiObject);
+		if (card.isDoor) {
+			discardsDoor.push(card);
+		}
+		else {
+			discardsTreas.push(card);
+		}
+	}
+
 	var door_deck_button = new Sprite.fromImage("images/door.jpg");
 	door_deck_button.x = 10;
 	door_deck_button.y = 10;
@@ -212,14 +242,29 @@ function boardSetup() {
 		else{
 			++players[currentPlayerIndex].level;
 		}
-		// discard(currentMonster);
+		discard(currentMonster);
 		currentMonster = null;
 	});
 	app.stage.addChild(resolveCombatButton);
 	var resolveCombatText = new Text('Resolve');
 	resolveCombatText.x = 20;
-	resolveCombatText.y = 164;
+	resolveCombatText.y = 163;
 	app.stage.addChild(resolveCombatText);
+
+	var endTurn = new PIXI.Graphics().beginFill(0x646464).drawRoundedRect(0, 0, 120, 40, 5);
+	endTurn.x = 10;
+	endTurn.y = 230;
+	endTurn.buttonMode = true;
+	endTurn.interactive = true;
+	endTurn.on('click', function (){
+		console.log(players[currentPlayerIndex]);
+		startNewTurn();
+	});
+	app.stage.addChild(endTurn);
+	var endTurn = new Text('End Turn');
+	endTurn.x = 20;
+	endTurn.y = 235;
+	app.stage.addChild(endTurn);
 }
 
 function init(){
@@ -241,7 +286,8 @@ function init(){
 init();
 
 function startNewTurn(){
-	app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
+	//app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
+	app.stage = new Container();
 	currentPlayerIndex = (currentPlayerIndex + 1)%players.length
 	players[currentPlayerIndex].hand.addTo(app.stage);
 	players[currentPlayerIndex].hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);

@@ -21,6 +21,10 @@ function shuffle(array){
     }
 }
 
+function discard(card) {
+	setTimeout(function() {cardPlace3.addChild(card)}, 3000);
+}
+
 var Card = (function (){
 	var cardPath = 'images/regular_card.png';
 	var nameTextStyle = new PIXI.TextStyle({

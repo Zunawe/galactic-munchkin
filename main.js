@@ -189,9 +189,11 @@ PlayerInfoCard.interactive = true;
 
 PlayerInfoCard.on('mouseover', function() {
 	PlayerInfoCard.y += (rectHeight-70);
+	PlayerInfoCard.removeChild(PlayerInfoCardTitle);
 });
 PlayerInfoCard.on('mouseout', function() {
 	PlayerInfoCard.y -= (rectHeight-70);
+	PlayerInfoCard.addChild(PlayerInfoCardTitle);
 });
 
 function playerInfo(name,level,power,race,clas) {
@@ -241,7 +243,7 @@ var cardPlace1Title = new Text("Player Card", {fontSize: 24, color: 'black'});
 cardPlace1Title.anchor.x = 0.5;
 cardPlace1Title.anchor.y = 0.5;
 cardPlace1.x = app.screen.width/2 + 100;
-cardPlace1.y = app.screen.height/2-150;
+cardPlace1.y = app.screen.height/2-300;
 cardPlace1Title.position.set(100,150);
 
 var cardPlace2 = new PIXI.Graphics().beginFill(0x646464,0.5).drawRect(0,0,200,300);
@@ -249,13 +251,14 @@ var cardPlace2Title = new Text("Door Card", {fontSize: 24, color: 'black'});
 cardPlace2Title.anchor.x = 0.5;
 cardPlace2Title.anchor.y = 0.5;
 cardPlace2.x = app.screen.width/2 - 300;
-cardPlace2.y = app.screen.height/2 - 150;
+cardPlace2.y = app.screen.height/2 - 300;
 cardPlace2Title.position.set(100,150);
 
 app.stage.addChild(cardPlace1);
 cardPlace1.addChild(cardPlace1Title);
 app.stage.addChild(cardPlace2);
 cardPlace2.addChild(cardPlace2Title);
+//-------------Played Cards Placement-------------
 
 
 

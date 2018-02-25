@@ -1,6 +1,6 @@
 DOOR CARDS						
 						
-Name	Type	Description	Effect	Power	Bad Stuff	Code Typing
+Name	Type	Description	Effect	Power	Bad Stuff	Temp Column
 Jedi	Class	Through the force, a jedi can use an extra hand’s worth of item(s). Jedi may discard 3 cards to force persuade a monster to not fight & just gain its treasure. This effect only works on one monster in combat	hand: +1	0	none	
 Companion	Class	On rolls of a 2 or less, companions may discard 1 card & re-roll the die. (can do this action as long as there is a card to discard. Companions can discard 3 cards to force someone to help you in combat (this can’t be used to gain the final level) 	none	0	none	
 Redshirt	Class	Redshirts may discard a card to try and steal a small item carried by another player. Roll a die and if the roll is greater than a 4 you steal the item, otherwise get ejected and lose a level. Redshirts may discard a card and roll to attempt to combine 2 1-handed items into a single handed item.	none	0	none	

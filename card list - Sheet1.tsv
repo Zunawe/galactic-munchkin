@@ -1,27 +1,27 @@
 DOOR CARDS						
 						
 Name	Type	Description	Effect	Power	Bad Stuff	Temp Column
-Jedi	Class	Through the force, a jedi can use an extra hand’s worth of item(s). Jedi may discard 3 cards to force persuade a monster to not fight & just gain its treasure. This effect only works on one monster in combat	hand: +1	0	none	
-Companion	Class	On rolls of a 2 or less, companions may discard 1 card & re-roll the die. (can do this action as long as there is a card to discard. Companions can discard 3 cards to force someone to help you in combat (this can’t be used to gain the final level) 	none	0	none	
-Redshirt	Class	Redshirts may discard a card to try and steal a small item carried by another player. Roll a die and if the roll is greater than a 4 you steal the item, otherwise get ejected and lose a level. Redshirts may discard a card and roll to attempt to combine 2 1-handed items into a single handed item.	none	0	none	
-Trooper	Class	Troopers may discard a card to give a +2 in battle (only once).Troopers have the ability to hold 6 cards in their hand. 	none	0	none	
-Time Lord	Race	If you kick down the door and find a trap card, the trap has no effect (because of time reasons) and Time Lords may kick down the door again.Time Lords have the ability to have 2 followers.	followers max: +1	0	none	
-Wookie	Race	Wookies have the ability to win ties. Wookies can carry multiple big items.	none	0	none	
-Vulcan	Race	Vulcans start at level 2 and can not go below level 2. Vulcans gain an additional treasure for helping someone in combat.	level min: 2	0	none	
-Lose 2 Cards	Curse	Starting with the player on the victim's left, take a card from the victim’s hand. Then the person on the victim’s right 	cards in hand: -2	0	none	
-Change Sex	Curse	-5 to the victim’s next combat and sex is permanently changed	power: -5	0	none	
-Lose Your Race 	Curse	If you have a class, you lose that race. If you have two lose 1 	current race: 0 	0	none	
-Lose Your Class	Curse	If you have a class, you lose that class. If you have two lose 1 	current class: 0 	0	none	
-Time Rift	Trap	Every player loses 2 levels	level: -2	0	none	
-Sucked Into Space	Trap	lose a level	level: -1	0	none	
-An Uncool Fez	Trap	-1 to die rolls 	escape roll: -1	0	none	
-Insult Khan	Trap	Lose a level	player level: -1	0	none	
-Frozen in Carbonite	Trap	Victim fights the next battle with only their level	combat affect: power	0	none	
-Stuck In Your Time Stream	Trap	skip the rest of your current turn  this card can be played on another player before the door is kicked down 	end your turn	0	none	
-Shot By Ray Gun	Trap	lose a small item	item(s) total: -1	0	none	
-Bad Hair Day	Trap	lose 1 small item	item(s) total: -1	0	none	
-Intergalactic IRS	Trap	discard 1 item and all other players must match the value of that item or lose a level	item(s) total: -1	0	none	
-Lose 1 Big Item	Trap	lose an item of victims choice	item(s) total: -1	0	none	
+Jedi	Class	Through the force, a jedi can use an extra hand’s worth of item(s). Jedi may discard 3 cards to force persuade a monster to not fight & just gain its treasure. This effect only works on one monster in combat	hand: +1	0	none	none
+Companion	Class	On rolls of a 2 or less, companions may discard 1 card & re-roll the die. (can do this action as long as there is a card to discard. Companions can discard 3 cards to force someone to help you in combat (this can’t be used to gain the final level) 	none	0	none	none
+Redshirt	Class	Redshirts may discard a card to try and steal a small item carried by another player. Roll a die and if the roll is greater than a 4 you steal the item, otherwise get ejected and lose a level. Redshirts may discard a card and roll to attempt to combine 2 1-handed items into a single handed item.	none	0	none	none
+Trooper	Class	Troopers may discard a card to give a +2 in battle (only once).Troopers have the ability to hold 6 cards in their hand. 	none	0	none	none
+Time Lord	Race	If you kick down the door and find a trap card, the trap has no effect (because of time reasons) and Time Lords may kick down the door again.Time Lords have the ability to have 2 followers.	followers max: +1	0	none	none
+Wookie	Race	Wookies have the ability to win ties. Wookies can carry multiple big items.	none	0	none	none
+Vulcan	Race	Vulcans start at level 2 and can not go below level 2. Vulcans gain an additional treasure for helping someone in combat.	level min: 2	0	none	none
+Lose 2 Cards	Curse	Starting with the player on the victim's left, take a card from the victim’s hand. Then the person on the victim’s right 	cards in hand: -2	0	none	none
+Change Sex	Curse	-5 to the victim’s next combat and sex is permanently changed	power: -5	0	none	none
+Lose Your Race 	Curse	If you have a class, you lose that race. If you have two lose 1 	current race: 0 	0	none	none
+Lose Your Class	Curse	If you have a class, you lose that class. If you have two lose 1 	current class: 0 	0	none	none
+Time Rift	Trap	Every player loses 2 levels	level: -2	0	none	none
+Sucked Into Space	Trap	lose a level	level: -1	0	none	none
+An Uncool Fez	Trap	-1 to die rolls 	escape roll: -1	0	none	none
+Insult Khan	Trap	Lose a level	player level: -1	0	none	none
+Frozen in Carbonite	Trap	Victim fights the next battle with only their level	combat affect: power	0	none	none
+Stuck In Your Time Stream	Trap	skip the rest of your current turn  this card can be played on another player before the door is kicked down 	end your turn	0	none	none
+Shot By Ray Gun	Trap	lose a small item	item(s) total: -1	0	none	none
+Bad Hair Day	Trap	lose 1 small item	item(s) total: -1	0	none	none
+Intergalactic IRS	Trap	discard 1 item and all other players must match the value of that item or lose a level	item(s) total: -1	0	none	none
+Lose 1 Big Item	Trap	lose an item of victims choice	item(s) total: -1	0	none	none
 Lose you class(es)	Trap	lose your class or classes if you have more than one	max class: -1 	0	none	none
 Lose your race(s)	Trap	lose your race or races if you have more than one	max race: -1 	0	none	none
 Lose your footgear	Trap	lose footgear	footgear: 0	0	none	none 
@@ -33,9 +33,9 @@ Pissed Off	Monster Modifier	moster power: +5	moster power: +5	0	none	temp
 Cute But Deadly	Monster Modifier	moster power: +5	moster power: +5	0	none	temp
 Cell Division	Monster Modifier	Moster is double (all attributes are doubled)	monster power: *2	0	none	temp
 Intelligent	Monster Modifier	monster power: +10	monster power: +10	0	none	temp
-Cheat	Special Card 	Play any itesm that would normally not be playable and gain its bonus	item(s) total: +1, power total: +?	0	none	
-Hail an Ally	Special Card 	Take 1 players item and that item must make the difference in the battle	item(s) total: +1, power total: +?	0	none	
-Fight Your Father	Character change	lose a hand	hand: -1	0	none	
+Cheat	Special Card 	Play any itesm that would normally not be playable and gain its bonus	item(s) total: +1, power total: +?	0	none	none
+Hail an Ally	Special Card 	Take 1 players item and that item must make the difference in the battle	item(s) total: +1, power total: +?	0	none	none
+Fight Your Father	Character change	lose a hand	hand: -1	0	none	none
 Half Breed	character change	You can have 2 race cards	race max: +1	0	none	none
 Half Breed	character change	You can have 2 race cards	race max: +1	0	none	none
 Super Munchkin	character change	You can have 2 class cards	class max: +1	0	none	none

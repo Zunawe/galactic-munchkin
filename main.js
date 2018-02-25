@@ -14,38 +14,39 @@ document.body.appendChild(app.view);
 
 var Card = (function (){
 	var cardPath = 'images/regular_card.png';
-	var titleTextStyle = new PIXI.TextStyle({
+	var nameTextStyle = new PIXI.TextStyle({
 		fontSize: 22,
 		fill: 'white'
 	});
 
 	return function Constructor(fields){
 		var _this = this;
-		_this.title = fields.title;
+		_this.name = fields.name;
 		_this.type = fields.type;
 		_this.description = fields.description;
 		_this.effect = fields.effect;
 		_this.power = fields.power;
 		_this.badstuff = fields.badstuff;
+		_this.temp = fields.tempcolumn === 'Temp';
 
 		var dragging = false;
 
 		_this.pixiObject = new Sprite.fromImage(cardPath);
 		_this.pixiObject.interactive = true;
-		var pixiTitle = new Text(_this.title, titleTextStyle);
-		pixiTitle.position.set(11, 7);
-		_this.pixiObject.addChild(pixiTitle);
+		var pixiName = new Text(_this.name, nameTextStyle);
+		pixiName.position.set(11, 7);
+		_this.pixiObject.addChild(pixiName);
 
 		_this.addTo = function (parent){
 			parent.addChild(_this.pixiObject);
 		};
 
 		_this.pixiObject.on('mouseover', function (){
-			_this.pixiObject.position.y -= 100;
+			_this.pixiObject.position.y -= 180;
 		});
 
 		_this.pixiObject.on('mouseout', function (){
-			_this.pixiObject.position.y += 100;
+			_this.pixiObject.position.y += 180;
 		});
 
 		_this.pixiObject.on('mousedown', function (){
@@ -62,7 +63,6 @@ var Card = (function (){
 				var mousePos = e.data.global;
 				_this.pixiObject.position.x += (mousePos.x - lastMousePos.x);
 				_this.pixiObject.position.y += (mousePos.y - lastMousePos.y);
-				console.log(mousePos.x - lastMousePos.x);
 			}
 			lastMousePos.x = e.data.global.x;
 			lastMousePos.y = e.data.global.y;
@@ -89,11 +89,26 @@ function Hand(){
 	}
 }
 
+var cards = [];
+(function loadCards(string){
+	var lines = string.split('\n');
+	var columnNames = lines[0].split('\t').map((s) => s.toLowerCase().replace(/ /g,''));
+	console.log(columnNames);
+	for(let i = 1; i < lines.length; ++i){
+		let tokens = lines[i].split('\t');
+		let newFields = {};
+		for(let j = 0; j < columnNames.length; ++j){
+			newFields[columnNames[j]] = tokens[j];
+		}
+		cards.push(new Card(newFields));
+	}
+})(cardListTSV);
+
 var hand = new Hand();
 hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
 
 for(let i = 0; i < 6; ++i){
-	hand.addCard(new Card({title: i + ''}));
+	hand.addCard(cards[i * 3]);
 }
 hand.addTo(app.stage);
 

@@ -7,6 +7,7 @@ const Container = PIXI.Container;
 var selectedCard = null;
 var currentPlayerIndex = -1;
 var battlePhase = false;
+var players = [];
 
 function shuffle(array){
     for (let i = array.length - 1; i > 0; --i) {

@@ -17,6 +17,8 @@ function gameLoop(dt){
 }
 app.ticker.add(gameLoop);
 
+var players = [];
+
 function boardSetup() {
 	var button = new Sprite.fromImage("images/die-5.png");
 	button.anchor.x = 1;
@@ -54,9 +56,9 @@ function boardSetup() {
 	}
 
 	//-------------Player Score-------------
-	var PLevel = '??';
-	var PPower = '??';
-	var PlayerScoreText = new Text('Current Player: '+currentPlayerIndex+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
+	var PLevel = players[currentPlayerIndex].level;
+	var PPower = players[currentPlayerIndex].power;
+	var PlayerScoreText = new Text('Current Player: '+(currentPlayerIndex+1)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
 	PlayerScoreText.anchor.x = 0.5;
 	PlayerScoreText.x = app.screen.width/2;
 	app.stage.addChild(PlayerScoreText);
@@ -186,8 +188,6 @@ function boardSetup() {
 		players[currentPlayerIndex].hand.addCard(drawCardTreas);
 	})
 }
-
-var players = [];
 
 function init(){
 	shuffle(doorDeck);

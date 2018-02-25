@@ -56,7 +56,7 @@ function boardSetup() {
 	//-------------Player Score-------------
 	var PLevel = '??';
 	var PPower = '??';
-	var PlayerScoreText = new Text('Current Player: '+players.indexOf(currentPlayer)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
+	var PlayerScoreText = new Text('Current Player: '+currentPlayerIndex+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'black', align: 'center'});
 	PlayerScoreText.anchor.x = 0.5;
 	PlayerScoreText.x = app.screen.width/2;
 	app.stage.addChild(PlayerScoreText);
@@ -136,7 +136,7 @@ function boardSetup() {
 	cardPlace1.on('mouseup', function (){
 		selectedCard.addTo(cardPlace1);
 		selectedCard.pixiObject.position.set(0, 0);
-		currentPlayer.hand.removeCard(selectedCard);
+		players[currentPlayerIndex].hand.removeCard(selectedCard);
 		selectedCard.isHeld = false;
 	});
 
@@ -152,6 +152,29 @@ function boardSetup() {
 	cardPlace1.addChild(cardPlace1Title);
 	app.stage.addChild(cardPlace2);
 	cardPlace2.addChild(cardPlace2Title);
+
+//-------------Played Cards Placement-------------
+	var door_deck_button = new Sprite.fromImage("images/die-2.png");
+	door_deck_button.anchor.x = 0;
+	door_deck_button.anchor.y = 0;
+	door_deck_button.x = 10;
+	door_deck_button.y = 10;
+	door_deck_button.buttonMode = true;
+	door_deck_button.interactive = true;
+	app.stage.addChild(door_deck_button);
+
+	door_deck_button.on('click',function() {
+	var drawnCardDoor = doorDeck.pop();
+	if (drawnCardDoor.type === 'MONSTER') {
+		battlePhase = !battlePhase;
+	}
+	if (battlePhase) {
+		drawnCardDoor.addTo(cardPlace2);
+	}
+	else {
+		players[currentPlayerIndex].hand.addCard(drawnCardDoor);
+	}
+	});
 }
 
 var players = [];
@@ -169,11 +192,13 @@ function init(){
 			players[i].hand.addCard(treasureDeck.pop());
 		}
 	}
+	currentPlayerIndex = players.length-1;
 }
 
 boardSetup();
 init();
 
-currentPlayer = players[0];
-currentPlayer.hand.addTo(app.stage);
-currentPlayer.hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);
+app.stage.removeChild(players[currentPlayerIndex].hand.pixiObject);
+currentPlayerIndex = (currentPlayerIndex + 1)%players.length
+players[currentPlayerIndex].hand.addTo(app.stage);
+players[currentPlayerIndex].hand.pixiObject.position.set(0, document.documentElement.clientHeight - 100);

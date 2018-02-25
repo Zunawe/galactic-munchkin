@@ -47,40 +47,40 @@ Force Deception	Help	Discard a monster and its modifiers and replace this monste
 Force Epiphany	Help	This card must be played immediatly. All jedi gain a level (and can gain the winning level)	level: jedi: +1	0	none
 					
 					
+Stormtrooper	MONSTER	_description_	none	1	none
+Wamp Rat	MONSTER	_description_	none	1	none
+The oode	MONSTER	_description_	none	1	none
 Monster: level 1	MONSTER	_description_	none	1	none
-Monster: level 1	MONSTER	_description_	none	1	none
-Monster: level 1	MONSTER	_description_	none	1	none
-Monster: level 1	MONSTER	_description_	none	1	none
+Jar Jar Binks	MONSTER	_description_	none	2	none
+Boba Fett	MONSTER	_description_	none	2	none
 Monster: level 2	MONSTER	_description_	none	2	none
 Monster: level 2	MONSTER	_description_	none	2	none
-Monster: level 2	MONSTER	_description_	none	2	none
-Monster: level 2	MONSTER	_description_	none	2	none
-Monster: level 2	MONSTER	_description_	none	2	none
+An Enemy Fleet	MONSTER	_description_	none	2	none
 Monster: level 4	MONSTER	_description_	none	4	none
 Monster: level 4	MONSTER	_description_	none	4	none
-Monster: level 4	MONSTER	_description_	none	4	none
-Monster: level 4	MONSTER	_description_	none	4	none
+A Mad Man In A Box	MONSTER	_description_	none	4	none
+Jango Fett	MONSTER	_description_	none	4	none
+An Alternate Universe's Version of You	MONSTER	_description_	none	player_power	none
 Monster: level 6	MONSTER	_description_	none	6	none
-Monster: level 6	MONSTER	_description_	none	6	none
-Monster: level 6	MONSTER	_description_	none	6	none
+Wampa	MONSTER	_description_	none	6	none
 Monster: level 8	MONSTER	_description_	none	8	none
-Monster: level 8	MONSTER	_description_	none	8	none
-Monster: level 8	MONSTER	_description_	none	8	none
-Monster: level 8	MONSTER	_description_	none	8	none
+A Single Dalek	MONSTER	_description_	none	8	none
+1 Weaping Angel	MONSTER	_description_	none	8	none
+Darth Maul	MONSTER	_description_	none	8	none
 Monster: level 10	MONSTER	_description_	none	10	none
-Monster: level 10	MONSTER	_description_	none	10	none
-Monster: level 10	MONSTER	_description_	none	10	none
+Klingons	MONSTER	_description_	none	10	none
+The Entire Centauren Empire	MONSTER	_description_	none	10	none
 Monster: level 12	MONSTER	_description_	none	12	none
-Monster: level 12	MONSTER	_description_	none	12	none
-Monster: level 12	MONSTER	_description_	none	12	none
-Monster: level 14	MONSTER	_description_	none	14	none
-Monster: level 14	MONSTER	_description_	none	14	none
-Monster: level 14	MONSTER	_description_	none	14	none
-Monster: level 16	MONSTER	_description_	none	16	none
-Monster: level 16	MONSTER	_description_	none	16	none
-Monster: level 18	MONSTER	_description_	none	18	none
-Monster: level 18	MONSTER	_description_	none	18	none
-Monster: level 20	MONSTER	_description_	none	20	none
+The Silence	MONSTER	_description_	none	12	none
+Count Dooku	MONSTER	_description_	none	12	none
+Cybermen	MONSTER	_description_	none	14	none
+Borg	MONSTER	_description_	none	14	none
+Darth Vader	MONSTER	_description_	none	14	none
+A Dalek Army	MONSTER	_description_	none	16	none
+Emperor Palpetine	MONSTER	_description_	none	16	none
+Kaaaaahhhhhhnnn	MONSTER	_description_	none	18	none
+The Master	MONSTER	_description_	none	18	none
+The Death Star	MONSTER	_description_	none	20	none
 					
 					
 TREASURE CARDS	Type 	Desciption	Effect	Power	Bad Stuff

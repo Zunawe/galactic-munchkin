@@ -66,7 +66,7 @@ function boardSetup() {
 
 	//-------------Player Info Cards-------------
 	var rectWidth = 300;
-	var rectHeight = 450;
+	var rectHeight = 430;
 	var PlayerInfoCard = new PIXI.Graphics().beginFill(0x646464).drawRoundedRect(0,0,rectWidth,rectHeight,20);
 	var PlayerInfoCardTitle = new Text("Player Info", {fontSize: 30 , color: 'black'});
 	PlayerInfoCardTitle.position.set(rectWidth/2, rectHeight-5);
@@ -85,21 +85,8 @@ function boardSetup() {
 		PlayerInfoCard.addChild(PlayerInfoCardTitle);
 	});
 
-	function playerInfo(name,level,power,race,clas) {
-		this.name = name;
-		this.level = level;
-		this.power = power;
-		this.race = race;
-		this.clas = clas;
-	}
-
-	var player1 = new playerInfo('Chewie',1,1,'Wookie','Jedi');
-	var player2 = new playerInfo('Clara',1,1,'Human','Companion');
-	var player3 = new playerInfo('Scottie',1,1,'Human','Red Shirt');
-	var player4 = new playerInfo('The Doctor',1,1,'Timelord','No Class');
-
-	function writePlayerInfo(player, y) {
-		var playerName = new Text(player.name, {fontSize: 24 , color: 'black'});
+	function writePlayerInfo(player, y, name) {
+		var playerName = new Text(name, {fontSize: 24 , color: 'black'});
 		var playerLevel = new Text('Level: '+player.level, {fontSize: 14 , color: 'black'});
 		var playerPower = new Text('Power: '+player.power, {fontSize: 14 , color: 'black'});
 		var playerRace = new Text(player.race ? ('Race: '+player.race.title) : "Race: Human", {fontSize: 14 , color: 'black'});
@@ -118,10 +105,10 @@ function boardSetup() {
 		PlayerInfoCard.addChild(playerClass);
 	}
 
-	writePlayerInfo(players[0],90*0+30);
-	writePlayerInfo(players[1],90*1+30);
-	writePlayerInfo(players[2],90*2+30);
-	writePlayerInfo(players[3],90*3+30);
+	writePlayerInfo(players[0],90*0+30, 'Player 1');
+	writePlayerInfo(players[1],90*1+30, 'Player 2');
+	writePlayerInfo(players[2],90*2+30, 'Player 3');
+	writePlayerInfo(players[3],90*3+30, 'Player 4');
 
 
 	app.stage.addChild(PlayerInfoCard);

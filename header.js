@@ -134,8 +134,8 @@ function Player() {
 	_this.class = undefined;
 }
 
-var treasureDeck = loadCards(treasureListTSV);
-var doorDeck = loadCards(doorListTSV);
+var treasureDeck = loadCards(treasureListTSV).map((card) => card.isDoor = false);
+var doorDeck = loadCards(doorListTSV).map((card) => card.isDoor = true);
 function loadCards(string){
 	var deck = [];
 	var lines = string.split('\n');

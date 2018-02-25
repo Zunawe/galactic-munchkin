@@ -59,7 +59,7 @@ function boardSetup() {
 	//-------------Player Score-------------
 	var PLevel = players[currentPlayerIndex].level;
 	var PPower = players[currentPlayerIndex].power;
-	var PlayerScoreText = new Text('Current Player: '+(currentPlayerIndex+1)+'\nLevel:'+PLevel+'		Power:'+PPower, {fontSize: 36 , color: 'white', align: 'center'});
+	var PlayerScoreText = new Text('Current Player: '+(currentPlayerIndex+1)+'\nLevel: '+PLevel+'		Power: '+PPower, {fontSize: 36 , color: 'white', align: 'center'});
 	PlayerScoreText.anchor.x = 0.5;
 	PlayerScoreText.x = app.screen.width/2;
 	app.stage.addChild(PlayerScoreText);
